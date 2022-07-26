@@ -1,27 +1,21 @@
 // Johnson and Trotter algorithm.
 #include<stdio.h>
-
 int LEFT_TO_RIGHT = 1;
 int RIGHT_TO_LEFT = 0;
-
-// Utility functions for finding the
-// position of largest mobile integer in a[].
-int searchArr(int a[], int n, int mobile)
+int searchArr(int a[], int n, int mobile)    // Utility functions for finding the position of largest mobile integer in a[].
 {
 for (int i = 0; i < n; i++)
 if (a[i] == mobile)
 return i + 1;
 }
 
-// To carry out step 1 of the algorithm i.e.
-// to find the largest mobile integer.
-int getMobile(int a[], int dir[], int n)
+int getMobile(int a[], int dir[], int n)     // To carry out step 1 of the algorithm i.e. to find the largest mobile integer.
 {
 int mobile_prev = 0, mobile = 0;
 for (int i = 0; i < n; i++)
 {
-// direction 0 represents RIGHT TO LEFT.
-if (dir[a[i]-1] == RIGHT_TO_LEFT && i!=0)
+
+if (dir[a[i]-1] == RIGHT_TO_LEFT && i!=0)    // direction 0 represents RIGHT TO LEFT.
 {
 if (a[i] > a[i-1] && a[i] > mobile_prev)
 {
@@ -30,8 +24,7 @@ mobile_prev = mobile;
 }
 }
 
-// direction 1 represents LEFT TO RIGHT.
-if (dir[a[i]-1] == LEFT_TO_RIGHT && i!=n-1)
+if (dir[a[i]-1] == LEFT_TO_RIGHT && i!=n-1)  // direction 1 represents LEFT TO RIGHT.
 {
 if (a[i] > a[i+1] && a[i] > mobile_prev)
 {
@@ -47,37 +40,31 @@ else
 return mobile;
 }
 
-// Prints a single permutation
-int printOnePerm(int a[], int dir[], int n)
+int printOnePerm(int a[], int dir[], int n)  // Prints a single permutation
 {
 int mobile = getMobile(a, dir, n);
 int pos = searchArr(a, n, mobile);
 
-// swapping the elements according to the
-// direction i.e. dir[].
-if (dir[a[pos - 1] - 1] == RIGHT_TO_LEFT)
-// swap(a[pos-1], a[pos-2]);
-{   printf("\n");
+if (dir[a[pos - 1] - 1] == RIGHT_TO_LEFT)    // swapping the elements according to the direction i.e. dir[].// swap(a[pos-1], a[pos-2]);
+{  
+  printf("\n");
   int temp;
-   temp = a[pos-1] ;
-   a[pos-1] = a[pos-2];
-   a[pos-2]=  temp;
+  temp = a[pos-1] ;
+  a[pos-1] = a[pos-2];
+  a[pos-2]=  temp;
 }
 
-
-else if (dir[a[pos - 1] - 1] == LEFT_TO_RIGHT)
-// swap(a[pos], a[pos-1]);
-{   printf("\n");
-   int temp;
-   temp = a[pos] ;
-   a[pos] = a[pos-1];
-   a[pos-1]=  temp;
+else if (dir[a[pos - 1] - 1] == LEFT_TO_RIGHT)    // swap(a[pos], a[pos-1]);
+{   
+  printf("\n");
+  int temp;
+  temp = a[pos] ;
+  a[pos] = a[pos-1];
+  a[pos-1]=  temp;
 }
 printf("\n");
 
-// changing the directions for elements
-// greater than largest mobile integer.
-for (int i = 0; i < n; i++)
+for (int i = 0; i < n; i++)   // changing the directions for elements greater than largest mobile integer.
 {
 if (a[i] > mobile)
 {
@@ -90,13 +77,9 @@ dir[a[i] - 1] = LEFT_TO_RIGHT;
 
 for (int i = 0; i < n; i++)
 printf(" %d", a[i]);
-
 }
 
-// To end the algorithm for efficiency it ends
-// at the factorial of n because number of
-// permutations possible is just n!.
-int fact(int n)
+int fact(int n)// To end the algorithm for efficiency it ends at the factorial of n because number of permutations possible is just n!.
 {
 int res = 1;
 int i;
@@ -105,49 +88,28 @@ res = res * i;
 return res;
 }
 
-// This function mainly calls printOnePerm()
-// one by one to print all permutations.
-void printPermutation(int n)
+void printPermutation(int n)// This function mainly calls printOnePerm() one by one to print all permutations.
 {
-// To store current permutation
-int a[n];
-
-// To store current directions
-int dir[n];
-    //printf("\n");
-// storing the elements from 1 to n and
-// printing first permutation.
-//printf("\n");
+int a[n];// To store current permutation
+int dir[n];// To store current directions //printf("\n"); // storing the elements from 1 to n and printing first permutation.
 for (int i = 0; i < n; i++)
 {
 a[i] = i + 1;
-//printf("\n");
 printf(" %d", a[i]);
-//printf("\n");
 }
-//printf("\n");
 
-
-// initially all directions are set
-// to RIGHT TO LEFT i.e. 0.
-for (int i = 0; i < n; i++)
+for (int i = 0; i < n; i++)// initially all directions are set to RIGHT TO LEFT i.e. 0.
 dir[i] = RIGHT_TO_LEFT;
 
-// for generating permutations in the order.
-for (int i = 1; i < fact(n); i++)
-
-printOnePerm(a, dir, n);
-//printf("\n");
+for (int i = 1; i < fact(n); i++)// for generating permutations in the order.
+printOnePerm(a, dir, n);//printf("\n");
 }
 
-// Driver code
 int main()
 {
 int n;
 printf("Enter n");
 scanf("%d",&n);
-//printf("\n");
 printPermutation(n);
-//printf("\n");
 return 0;
 }
