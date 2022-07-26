@@ -47,3 +47,20 @@ void main() {
   source_removal(n,a);
   getch();
 }
+
+//Enter number of nodes:6
+//Enter the adjacency matrix:
+// 0 0 1 1 0 0
+// 0 0 0 1 1 0
+// 0 0 0 1 0 1
+// 0 0 0 0 0 1
+// 0 0 0 0 0 1
+// 0 0 0 0 0 0
+
+//OUTPUT:
+//1
+//4
+//0
+//2
+//3
+//5
