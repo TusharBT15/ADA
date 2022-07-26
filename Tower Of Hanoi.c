@@ -16,7 +16,7 @@
          printf("\n Move disk 1 from peg %c to peg %c",frompeg,topeg);
          return;
      }
-     towers(num-1, frompeg,topeg,auxpeg);
+     towers(num-1, frompeg,auxpeg,topeg);
      printf("\n Move disk %d from PEG %c to peg %c",num,frompeg,topeg);
-     towers(num-1,auxpeg,frompeg,topeg);
+     towers(num-1,auxpeg,topeg,frompeg);
  }
