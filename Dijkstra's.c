@@ -63,7 +63,7 @@ for(j=1;j<=n;j++)
   }
 }
 
-OUTPUT:
+/*OUTPUT:
 
 Enter the num of vertices: 	5
 Enter the cost matrix: 
@@ -81,3 +81,4 @@ The shortest distance is:
 1----->3 = 7
 1----->4 = 5
 1----->5 = 9
+*/
